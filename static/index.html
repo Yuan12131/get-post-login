@@ -31,34 +31,26 @@
     function check(){
 
       const id = document.getElementById("ID");
-      console.dir(id)
       const password = document.getElementById("password");
       const passwordTwo = document.getElementById("passwordTwo");
       const email = document.getElementById("email");
+      const regId = `[a-zA-Z]{1,10}$`;
 
-      
-      const regId = `[a-zA-Z0-9]`;
-      // 아이디 대소문자, 숫자 확인
-      if(!regId.test(id.value) || id.value === null){
-        alert("영문 대소문자, 숫자만 입력하세요.")
-        id.focus();
-        return false;
-      }
+      // 아이디 대소문자 확인
+      if(!regId.test(id.value)){
+            alert("1~10자 영문 대소문자, 숫자만 입력하세요.")
+            id.focus();
+            return false;
+        }
             
       //비밀번호 확인
-      if(password.value !== passwordTwo.value || password.value === null || passwordTwo.value === null){
+      if(password.value !== passwordTwo.value){
         alert("비밀번호가 동일하지 않습니다.")
         password.focus();
         return false;
       }
       
-      // email 확인
-      if(email.value === null || email.value.indexOf("@") == -1 || email.value.indexOf(".") == -1){
-          alert("잘못된 이메일 형식입니다.")
-          email.focus();
-          return false;
-      }
-      return true; //확인이 완료되었을 때
+      document.joinForm.submit(); //확인이 완료되었을 때
     }
 
   </script>
