@@ -6,21 +6,21 @@
   <title>Document</title>
 </head>
 <body>
-  <form method="POST" action="sub.html" onclick="return check()">
+  <form method="POST" action="sub.html" onsubmit="check()">
     <p>ID</p>
-    <input type="text" id="ID">
+    <input type="id" id="ID">
     <br>
 
     <p>PW</p>
-    <input type="text" id="password">
+    <input type="password" id="password">
     <br>
 
     <p>PW</p>
-    <input type="text" id="passwordTwo">
+    <input type="password" id="passwordTwo">
     <br>
 
     <p>Email</p>
-    <input type="text" id="email">
+    <input type="email" id="email">
     <br>
 
     <input type="submit" id="sign up" value="Sign up">
@@ -28,21 +28,24 @@
     
   </form>
   <script>
-    const id = document.getElementById("ID");
-    const password = document.getElementById("password");
-    const passwordTwo = document.getElementById("passwordTwo");
-    const email = document.getElementById("email");
-
-
     function check(){
-      if (!checkUserID(form.id.value)) {
-        return flase;
-      } else if (!checkPassword(form.password.value, form.passwordTwo.vlaue)) {
-        return flase;
-      } else if (!checkMail(form.mail.value)) {
-        return false;
+
+      const id = document.getElementById("ID");
+      console.dir(id)
+      const password = document.getElementById("password");
+      const passwordTwo = document.getElementById("passwordTwo");
+      const email = document.getElementById("email");
+
+      // email 확인
+      if(email.value.indexOf("@") == -1 || email.value.indexOf(".") == -1 || email.value === null){
+          alert("잘못된 이메일 형식입니다.")
+          email.focus();
+          return false;
       }
-    };
+      
+      return true; //확인이 완료되었을 때
+    }
+
   </script>
 
 </body>
