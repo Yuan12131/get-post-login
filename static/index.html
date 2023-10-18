@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form method="POST" action="sub.html" onclick="return check()">
+    <p>ID</p>
+    <input type="text" id="ID">
+    <br>
+
+    <p>PW</p>
+    <input type="text" id="password">
+    <br>
+
+    <p>PW</p>
+    <input type="text" id="passwordTwo">
+    <br>
+
+    <p>Email</p>
+    <input type="text" id="email">
+    <br>
+
+    <input type="submit" id="sign up" value="Sign up">
+    <br>
+    
+  </form>
+  <script>
+    const id = document.getElementById("ID");
+    const password = document.getElementById("password");
+    const passwordTwo = document.getElementById("passwordTwo");
+    const email = document.getElementById("email");
+
+
+    function check(){
+      if (!checkUserID(form.id.value)) {
+        return flase;
+      } else if (!checkPassword(form.password.value, form.passwordTwo.vlaue)) {
+        return flase;
+      } else if (!checkMail(form.mail.value)) {
+        return false;
+      }
+    };
+  </script>
+
+</body>
+</html>
