@@ -44,7 +44,13 @@
         id.focus();
         return false;
       }
-
+            
+      //비밀번호 확인
+      if(password.value !== passwordTwo.value || password.value === null || passwordTwo.value === null){
+        alert("비밀번호가 동일하지 않습니다.")
+        password.focus();
+        return false;
+      }
       
       // email 확인
       if(email.value === null || email.value.indexOf("@") == -1 || email.value.indexOf(".") == -1){
