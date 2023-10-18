@@ -3,13 +3,26 @@ const fs = require('fs');
 
 http.createServer(function(req, res){
 
-  res.writeHead(200, {"Content-Type" : "text/html"});
+  if(req.url === '/'){
+    fs.readFile("./static/index.html", function(err, data){
+      if (err){
+        console.error("파일을 읽지 못했습니다.");
+      } else {
+        res.writeHead(200, {"Content-Type" : "text/html"});
+        res.end(data);
+      } 
+    })
+  }
 
-  fs.readFile("./static/index.html", function(err, data){
-    if (err){
-      console.error("파일을 읽지 못했습니다.");
-    } else {
-      res.end(data);
-    }
-  })
-}).listen(8019)
+  if(req.url === '/sub.html'){
+    fs.readFile("./static/sub.html", function(err, data){
+      if (err){
+        console.error("파일을 읽지 못했습니다.");
+      } else {
+        res.writeHead(200, {"Content-Type" : "text/html"});
+        res.end(data);
+      } 
+    })
+  }
+
+  }).listen(8080)
