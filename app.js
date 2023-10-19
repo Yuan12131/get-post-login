@@ -7,8 +7,8 @@ const signUpAsset = require("./signup-asset/signup-asset.js"); // signUp 데이�
 const checkId = require('./module/checkId.js'); // id 영문 대소문자 검사 함수 모듈 가져오기
 const checkPw = require('./module/checkPw.js'); // pw 검사 함수 모듈 가져오기
 const checkEmail = require('./module/checkEmail.js') // email 검사 함수 모듈 가져오기
-res.writeHead(200, {"Content-Type" : "text/html"});
-res.end(subPage.one + `${signUpAsset.id}` + subPage.two); // 조건식이 참이면 읽을 데이터 subPage
+
+const subPage = require('./module/subPage.js')
 
 // 서버 생성
 http.createServer(function(req, res){
