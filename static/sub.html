@@ -7,7 +7,7 @@
 </head>
 <body>
   <p>ooo님! 반갑습니다</p>
-  <form method="POST" id="form" onsubmit="return check();">
+  <form method="POST" id="form">
     <p>Title</p>
     <input type="text" id="title" name="title">
     <br>
@@ -16,27 +16,49 @@
     <input type="text" id="text" name="text">
     <br>
 
-    <input type="submit" name="send" value="send">
+    <input type="button" id="btn" name="send" value="send" disabled='disabled'>
     <br>
   </form>
 
   <script>
     const title = document.getElementById("title");
     const text = document.getElementById("text")
+    const btn = document.getElementById('btn')
 
-    function check(){
+    function caution (){
       if(title.value === ""){
         alert("제목을 입력해주세요")
         title.focus();
-        return false;
       }
+
       if(text.value === ""){
         alert("내용을 입력해주세요")
         text.focus();
-        return false;
       }
-      return true;
     }
+    
+    btn.addEventListener('mouseover', caution)
+
+    function active() {
+      if (!(title.value && text.value)) {
+        btn.disabled = true;
+      } else {
+        btn.disabled = false;
+      }
+    }
+
+    title.addEventListener("keyup", active);
+    text.addEventListener("keyup", active);
+
+    // btn.addEventListener('mouseover', function(){
+    //   if (title.value === "" || text.value === ""){
+    //     btn.disabled = true;
+    //     alert("내용을 입력해주세요")
+    //   }
+    //   btn.disabled = false;
+    // });
+
+
   </script>
 </body>
 </html>
