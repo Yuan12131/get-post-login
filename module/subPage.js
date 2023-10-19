@@ -10,7 +10,7 @@ one : `<!DOCTYPE html>
   <h1>`,
   two : `님, 안녕하세요
   </h1>
-  <form method="POST" id="form">
+  <form method="post" action="/send">
     <p>Title</p>
     <input type="text" id="title" name="title">
     <br>
