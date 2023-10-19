@@ -8,7 +8,10 @@ const checkId = require('./module/checkId.js'); // id 영문 대소문자 검사
 const checkPw = require('./module/checkPw.js'); // pw 검사 함수 모듈 가져오기
 const checkEmail = require('./module/checkEmail.js') // email 검사 함수 모듈 가져오기
 
-const subPage = require('./module/subPage.js')
+const subPage = require('./module/subPage.js');
+
+const sendAsset = require("./signup-asset/send-asset.js"); // send 데이터 객체 모듈 불러오기
+
 
 // 서버 생성
 http.createServer(function(req, res){
@@ -25,8 +28,8 @@ http.createServer(function(req, res){
   })
 }
 
-// POST 방식으로 요청 (sign up에서 submit)할 때 실행
-  if(req.method = "POST"){
+  // POST 방식으로 요청 (sign up에서 submit)할 때 실행
+  if(req.method === "POST"){
 
       let body = '';
   
@@ -39,10 +42,10 @@ http.createServer(function(req, res){
       // on에서 읽어와서 body에 저장한 chunk 데이터를 파싱
       req.on("end", () => {
 
-        const parseBody = qs.parse(body); // body 값을 parseBody라는 객체에 문자열로 대입
+        let parseBody = qs.parse(body); // body 값을 parseBody라는 객체에 문자열로 대입
 
         Object.assign(signUpAsset, parseBody); // parseBody의 프로퍼티 키와 동일한 signUpAsset의 프로퍼티 키에 값을 대입
-        console.log(signUpAsset);
+
         // id, password, email 조건식
         if (
           checkId(signUpAsset.id) && 
@@ -52,8 +55,28 @@ http.createServer(function(req, res){
           res.writeHead(200, {"Content-Type" : "text/html"});
           res.end(subPage.one + `${signUpAsset.id}` + subPage.two); // 조건식이 참이면 읽을 데이터 subPage
         }
-
       })
-  }  
+  }
+  
+  // POST 방식으로 요청 (subPage에서 send)할 때 실행
+  if(req.method === 'POST' && req.url === '/send'){
+    console.log("hello")
+    let body = '';
+
+    // data 이벤트가 발생하면 chunk 함수 실행
+    req.on("data", (chunk) => {
+      body += chunk.toString(); // body = body + chunk.toString -> input에 입력된 데이터를 문자열로 body에 반환
+    });
+
+    // end 이벤트가 발생하면 실행되는 함수
+    // on에서 읽어와서 body에 저장한 chunk 데이터를 파싱
+    req.on("end", () => {
+
+      let parseBody = qs.parse(body); // body 값을 parseBody라는 객체에 문자열로 대입
+        Object.assign(sendAsset, parseBody); // sendAsset에 parseBody 프로퍼티 값 대입
+        console.log(sendAsset) // 터미널로 출력
+    })
+  }
+
 
   }).listen(8080) //포트 번호 8080
