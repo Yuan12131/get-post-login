@@ -6,7 +6,7 @@
   <title>Document</title>
 </head>
 <body>
-  <form method="POST" action="sub.html" id="form" onsubmit="check(); return false;">
+  <form method="POST" action="sub.html" id="form" onsubmit="return check();">
     <p>ID</p>
     <input type="text" id="ID">
     <br>
@@ -35,42 +35,35 @@
 
     function check(){
 
-      const regId = `[a-zA-Z]{1,10}$`;
+      const regId = new RegExp (`^(?=.*[a-z])(?=.*[A-Z])`);
 
       // 아이디 대소문자 확인
-      if(!regId.test(id.value)){
-            alert("1~10자 영문 대소문자, 숫자만 입력하세요.")
+      if(!regId.test(`${id.value}`)){
+            alert("영문 대소문자를 꼭 포함해주세요.")
             id.focus();
             return false;
         }
             
-      //비밀번호 확인
+      // 비밀번호 확인
       if(password.value !== passwordTwo.value){
         alert("비밀번호가 동일하지 않습니다.")
+        password.focus();
+        return false;
+      } else if(password.value === ""){
+        alert("비밀번호를 입력해주세요")
         password.focus();
         return false;
       }
 
       // email 확인
-      if(mail.value.indexOf("@") == -1 || mail.value.indexOf(".") == -1){
+      if(email.value.indexOf("@") == -1 || email.value.indexOf(".") == -1){
         alert("잘못된 이메일 형식입니다.")
-        mail.focus();
+        email.focus();
         return false;
         }
-      
-      return true; //확인이 완료되었을 때
-    }
 
-    const signUpAsset = {
-      id : id.value,
-      password : password.value,
-      email : email.value,
-      inputBoxColor : "#B6B6B6",
-      pointColor : "#FF6666"
+        return true;
     }
-    console.log(signUpAsset)
-
-    module.exports = signUpAsset;
 
   </script>
 
