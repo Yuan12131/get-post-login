@@ -3,10 +3,7 @@ const fs = require('fs'); // fs 불러오기
 
 const qs = require("querystring"); // queryString 불러오기
 const signUpAsset = require("./signup-asset/signup-asset.js"); // signUp 데이터 객체 모듈 불러오기
-const subPage = require('./module/sub.js'); // subPage HTML js 모듈로 가져오기
-const idCheck = require('./module/idCheck.js'); // id 영문 대소문자 검사 함수 모듈 가져오기
-const pwCheck = require('./module/pwCheck.js'); // pw 검사 함수 모듈 가져오기
-const emailCheck = require('./module/emailCheck.js') // email 검사 함수 모듈 가져오기
+
 
 // 서버 생성
 http.createServer(function(req, res){
@@ -41,16 +38,6 @@ http.createServer(function(req, res){
 
         Object.assign(signUpAsset, parseBody); // parseBody의 프로퍼티 키와 동일한 signUpAsset의 프로퍼티 키에 값을 대입
         console.log(signUpAsset);
-
-        // id, password, email 조건식
-        if (
-          idCheck(signUpAsset.id) && 
-          pwCheck(signUpAsset.password, signUpAsset.password2) &&
-          emailCheck(signUpAsset.email)
-        ) {
-          res.writeHead(200, {"Content-Type" : "text/html"});
-          res.end(subPage.one + `${signUpAsset.id}` + subPage.two); // 조건식이 참이면 읽을 데이터 subPage
-        }
 
       })
   }  
