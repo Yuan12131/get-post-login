@@ -7,21 +7,36 @@
 </head>
 <body>
   <p>ooo님! 반갑습니다</p>
+  <form method="POST" id="form" onsubmit="return check();">
+    <p>Title</p>
+    <input type="text" id="title" name="title">
+    <br>
 
-  <p>Title</p>
-  <input type="text" name="title">
-  <br>
+    <p>Text</p>
+    <input type="text" id="text" name="text">
+    <br>
 
-  <p>Text</p>
-  <input type="text" name="text">
-  <br>
-
-  <input type="submit" name="send" value="send">
-  <br>
+    <input type="submit" name="send" value="send">
+    <br>
+  </form>
 
   <script>
-    import * as signUpAsset from './index.html';
+    const title = document.getElementById("title");
+    const text = document.getElementById("text")
+
+    function check(){
+      if(title.value === ""){
+        alert("제목을 입력해주세요")
+        title.focus();
+        return false;
+      }
+      if(text.value === ""){
+        alert("내용을 입력해주세요")
+        text.focus();
+        return false;
+      }
+      return true;
+    }
   </script>
-  
 </body>
 </html>
