@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+const subPage = {
+one : `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -6,8 +7,9 @@
   <title>Document</title>
 </head>
 <body>
-  <p>ooo님! 반갑습니다</p>
-
+  <h1>`,
+  two : `님, 안녕하세요
+  </h1>
   <form method="POST" id="form">
     <p>Title</p>
     <input type="text" id="title" name="title">
@@ -20,7 +22,6 @@
     <input type="button" id="btn" name="send" value="send" disabled='disabled'>
     <br>
   </form>
-
   <script>
     const title = document.getElementById("title"); // title input
     const text = document.getElementById("text") // text input
@@ -28,12 +29,12 @@
 
     // input을 빈칸으로 버튼을 누르면 팝업창 뜨는 함수
     btn.addEventListener('mouseover', caution => {
-        if(!(title.value)){
+        if(title.value === ""){
           alert("제목을 입력해주세요")
           title.focus();
         }
         
-        if(!(text.value)){
+        if(text.value === ""){
         alert("내용을 입력해주세요")
         text.focus();
         }
@@ -54,4 +55,7 @@
 
   </script>
 </body>
-</html>
+</html>`
+}
+
+module.exports = subPage;
