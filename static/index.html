@@ -10,11 +10,11 @@
       제출할 때 check 함수를 실행하여 유효성 검사 진행 -->
   <form method="POST" action="sub.html" id="form" onsubmit="return check();">
     <p>ID</p>
-    <input type="text" id="ID">
+    <input type="text" name="id" id="id">
     <br>
 
     <p>PW</p>
-    <input type="text" id="password">
+    <input type="text" name="password" id="password">
     <br>
 
     <p>PW</p>
@@ -22,7 +22,7 @@
     <br>
 
     <p>Email</p>
-    <input type="text" id="email">
+    <input type="text" name="email" id="email">
     <br>
 
     <input type="submit" value="Sign up">
@@ -30,7 +30,7 @@
     
   </form>
   <script>
-    const id = document.getElementById("ID"); // id input
+    const username = document.getElementById("id"); // id input
     const password = document.getElementById("password"); // password input
     const passwordTwo = document.getElementById("passwordTwo"); // passwordTwo input
     const email = document.getElementById("email"); // email input
@@ -42,7 +42,7 @@
 
       // 아이디에 영어 대소문자 확인하는 조건식
       if(!regId.test(`${id.value}`)){
-            alert("영문 대소문자를 꼭 포함해주세요.")
+            alert("ID에 영문 대소문자를 꼭 포함해주세요.")
             id.focus();
             return false;
         }

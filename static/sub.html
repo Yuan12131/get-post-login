@@ -27,7 +27,7 @@
     const btn = document.getElementById('btn') // send button
 
     // input을 빈칸으로 버튼을 누르면 팝업창 뜨는 함수
-    btn.addEventListener('click', caution => {
+    btn.addEventListener('mouseover', caution => {
         if(title.value === ""){
           alert("제목을 입력해주세요")
           title.focus();
