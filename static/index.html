@@ -8,7 +8,8 @@
 <body>
   <!-- form을 제출하면 POST 방식으로 sub.html로 이동
       제출할 때 check 함수를 실행하여 유효성 검사 진행 -->
-  <form method="POST" action="sub.html" id="form" onsubmit="return check();">
+      <!-- app.js에서 querystring을 가져오면서 페이지 이동 서빙에서 진행하는 걸로 변경 -->
+  <form method="POST" id="form">
     <p>ID</p>
     <input type="text" name="id" id="id">
     <br>
@@ -18,7 +19,7 @@
     <br>
 
     <p>PW</p>
-    <input type="text" id="passwordTwo">
+    <input type="text" name="password2" id="password2">
     <br>
 
     <p>Email</p>
@@ -29,10 +30,10 @@
     <br>
     
   </form>
-  <script>
+  <!-- <script>
     const username = document.getElementById("id"); // id input
     const password = document.getElementById("password"); // password input
-    const passwordTwo = document.getElementById("passwordTwo"); // passwordTwo input
+    const password2 = document.getElementById("password2"); // password2 input
     const email = document.getElementById("email"); // email input
 
     function check(){
@@ -47,8 +48,8 @@
             return false;
         }
             
-      // password와 passwordTwo 가 동일하게 작성되었는지 확인하는 조건식
-      if(password.value !== passwordTwo.value){
+      // password와 password2 가 동일하게 작성되었는지 확인하는 조건식
+      if(password.value !== password2.value){
         alert("비밀번호가 동일하지 않습니다.")
         password.focus();
         return false;
@@ -68,7 +69,7 @@
         return true; // 확인이 끝난 후 true 반환
     }
 
-  </script>
+  </script> -->
 
 </body>
 </html>
