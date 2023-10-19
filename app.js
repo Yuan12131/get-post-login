@@ -7,7 +7,7 @@ const signUpAsset = require("./signup-asset/signup-asset.js"); // signUp 데이�
 // 서버 생성
 http.createServer(function(req, res){
   // index.html 불러오기
-  if(req.method === 'GET' && req.url === '/'){
+  if(req.url === '/'){
     fs.readFile("./static/index.html", function(err, data){
       if (err){
         console.error("파일을 읽지 못했습니다.");
@@ -17,37 +17,41 @@ http.createServer(function(req, res){
       }
     })
   } 
-
-  // POST 방식으로 요청 (sign up에서 submit)할 때 실행할 함수
-  if (req.method === "POST") {
-    let body = '';
-
-    // data 이벤트가 발생하면 chunk 함수 실행
-    req.on("data", (chunk) => {
-      body += chunk.toString(); // body = body + chunk.toString -> input에 입력된 데이터를 문자열로 body에 반환
-    });
-
-    // end 이벤트가 발생하면 실행되는 함수
-    // on에서 읽어와서 body에 저장한 chunk 데이터를 파싱
-    req.on("end", () => {
-      const parseBody = qs.parse(body);
-      Object.assign(signUpAsset, parseBody); // parseBody의 프로퍼티 키와 동일한 signUpAsset의 프로퍼티 키에 값을 대입
-      console.log(parseBody);
-      console.log(signUpAsset);
-      console.log(signUpAsset.id);
-    });
-  }
-
+  
   // sub.html 불러오기
-  if(req.url === '/sub.html'){
-    fs.readFile("./static/sub.html", function(err, data){
-      if (err){
-        console.error("파일을 읽지 못했습니다.");
-      } else {
-        res.writeHead(200, {"Content-Type" : "text/html"});
-        res.end(data);
-      } 
-    })
-  }
+  if(req.method = "POST" && req.url === '/sub.html'){
+    // POST 방식으로 요청 (sign up에서 submit)할 때 실행할 함수
+      let body = '';
+  
+      // data 이벤트가 발생하면 chunk 함수 실행
+      req.on("data", (chunk) => {
+        body += chunk.toString(); // body = body + chunk.toString -> input에 입력된 데이터를 문자열로 body에 반환
+      });
+  
+      // end 이벤트가 발생하면 실행되는 함수
+      // on에서 읽어와서 body에 저장한 chunk 데이터를 파싱
+      req.on("end", () => {
+
+        const parseBody = qs.parse(body);
+        // const {username, password, email} = parseBody;
+
+        Object.assign(signUpAsset, parseBody); // parseBody의 프로퍼티 키와 동일한 signUpAsset의 프로퍼티 키에 값을 대입
+        console.log(parseBody);
+        console.log(signUpAsset);
+        console.log(signUpAsset.id);
+      })
+  }  
+
+    if(req.url === '/sub.html') {
+      
+      fs.readFile("./static/sub.html", function(err, data){
+        if (err){
+          console.error("파일을 읽지 못했습니다.");
+        } else {
+          res.writeHead(200, {"Content-Type" : "text/html"});
+          res.end(data);
+        } 
+      })
+    }
 
   }).listen(8080) //포트 번호 8080
