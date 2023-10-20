@@ -4,29 +4,73 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    form {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin-top: 300px;
+    }
+    div{
+      display: flex;
+      margin: 5px;
+      align-items: center;
+      justify-content: flex-end;
+      width: 300px;
+      color: #b6b6b6;
+    }
+    input {
+      width: 200px;
+      height: 25px;
+      margin: 5px;
+      background-color: #cfcece;
+      border: 0;
+      border-radius: 5px;
+    }
+    #submit{
+      width: 70px;
+      background-color: #FF6666;
+      color: white;
+
+    }
+  </style>
 </head>
 <body>
   <!-- form을 제출하면 POST 방식으로 sub.html로 이동
       제출할 때 check 함수를 실행하여 유효성 검사 진행 -->
       <!-- app.js에서 querystring을 가져오면서 페이지 이동 서빙에서 진행하는 걸로 변경 -->
   <form method="POST" id="form">
-    <p>ID</p>
-    <input type="text" name="id" id="id">
-    <br>
+    <div>
+      <p>ID  </p>
+      <input type="text" name="id" id="id">
+      <br>
+    </div>
 
-    <p>PW</p>
-    <input type="text" name="password" id="password">
-    <br>
+    <div>
+      <p>PW  </p>
+      <input type="text" name="password" id="password">
+      <br>
+    </div>
+    
+    <div>
+      <p>PW  </p>
+      <input type="text" name="password2" id="password2">
+      <br>
+    </div>
 
-    <p>PW</p>
-    <input type="text" name="password2" id="password2">
-    <br>
+    <div>
+      <p>Email  </p>
+      <input type="text" name="email" id="email">
+      <br>
+    </div>
 
-    <p>Email</p>
-    <input type="text" name="email" id="email">
-    <br>
-
-    <input type="submit" value="Sign up">
+    <input type="submit" value="Sign up" id="submit">
     <br>
     
   </form>
