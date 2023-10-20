@@ -1,5 +1,5 @@
-function pwCheck(pwPOne, pwTwo){
-  if (pwPOne === pwTwo){
+function pwCheck(pwOne, pwTwo){
+  if (pwOne === pwTwo){
     return true;
   }
 }
