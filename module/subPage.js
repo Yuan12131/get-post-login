@@ -18,6 +18,7 @@ one : `<!DOCTYPE html>
       justify-content: center;
       flex-direction: column;
       padding:100px;
+      color: #b6b6b6;
     }
     div{
       display: flex;
@@ -25,7 +26,6 @@ one : `<!DOCTYPE html>
       align-items: center;
       justify-content: flex-end;
       width: 300px;
-      color: #b6b6b6;
     }
     #title {
       width: 300px;
