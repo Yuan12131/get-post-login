@@ -5,20 +5,74 @@ one : `<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding:100px;
+    }
+    div{
+      display: flex;
+      margin: 5px;
+      align-items: center;
+      justify-content: flex-end;
+      width: 300px;
+      color: #b6b6b6;
+    }
+    #title {
+      width: 300px;
+      height: 25px;
+      margin: 5px;
+      background-color: #cfcece;
+      border: 0;
+      border-radius: 5px;
+    }
+
+    #text {
+      width: 300px;
+      height: 300px;
+      margin: 5px;
+      background-color: #cfcece;
+      border: 0;
+      border-radius: 5px;
+    }
+
+    #btn{
+      width: 70px;
+      height: 25px;
+      background-color: #FF6666;
+      color: white;
+      border: 0;
+      border-radius: 5px;
+      margin-left : 50px;
+    }
+  </style>
 </head>
 <body>
-  <h1>`,
-  two : `님, 안녕하세요
-  </h1>
+  <h3>`,
+  two : `님! 반갑습니다. <br> 저에게 편지를 보내주세요!
+  </h3>
   <form action="/send" method="post">
-    <p>Title</p>
-    <input type="text" id="title" name="title">
-    <br>
+    <div>
+      <p>Title</p>
+      <input type="text" id="title" name="title">
+      <br>
+    </div>
 
-    <p>Text</p>
-    <input type="text" id="text" name="text">
-    <br>
-
+    <div>
+      <p>Text</p>
+      <input type="text" id="text" name="text">
+      <br>
+    </div>
+    
     <input type="submit" id="btn" value="send" disabled='disabled'>
     <br>
   </form>
