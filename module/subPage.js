@@ -19,7 +19,7 @@ one : `<!DOCTYPE html>
     <input type="text" id="text" name="text">
     <br>
 
-    <input type="submit" id="btn" name="send" value="send" disabled='disabled'>
+    <input type="submit" id="btn" value="send" disabled='disabled'>
     <br>
   </form>
   <script>
