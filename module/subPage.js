@@ -10,7 +10,7 @@ one : `<!DOCTYPE html>
   <h1>`,
   two : `님, 안녕하세요
   </h1>
-  <form method="post" action="/send">
+  <form action="/send" method="post">
     <p>Title</p>
     <input type="text" id="title" name="title">
     <br>
@@ -19,7 +19,7 @@ one : `<!DOCTYPE html>
     <input type="text" id="text" name="text">
     <br>
 
-    <input type="button" id="btn" name="send" value="send" disabled='disabled'>
+    <input type="submit" id="btn" name="send" value="send" disabled='disabled'>
     <br>
   </form>
   <script>
